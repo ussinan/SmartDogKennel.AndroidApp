@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#90EFEF"
+	>
+	<TextView
+		android:text="PATI CLUB"
+		android:textSize="20sp"
+		android:textStyle="bold"
+		android:gravity="center"
+		android:textColor="#002266"
+		android:background="#FF6000"
+		android:textStyle="bold"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="60dp"
+		android:layout_height="82.5dp"
+		android:layout_width="match_parent"
+		android:id="@+id/patiText" />
+	
+	<ListView
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="match_parent"
+		android:layout_height="330dp"
+		android:layout_marginBottom="10dp"
+		android:id="@+id/listView2" />
+	<Button
+		android:id="@+id/buttonGirisYap"
+		android:text="GIRIS YAP"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_marginTop="20dp"
+		android:background="#ffae42"
+		android:paddingLeft="5dp"
+		android:paddingRight="5dp"
+		android:paddingBottom="5dp"
+		android:paddingTop="3dp"
+		android:height="70dp"
+		android:layout_marginLeft="50dp"
+		android:layout_marginRight="50dp"
+		android:layout_centerHorizontal="True"
+		android:textColor="#000000"
+	/>
+
+
+			
+</LinearLayout>
