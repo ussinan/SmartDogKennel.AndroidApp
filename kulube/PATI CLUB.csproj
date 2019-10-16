@@ -35,6 +35,11 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
+    <AndroidSupportedAbis />
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -57,12 +62,9 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin.cs" />
-    <Compile Include="adminLogin.cs" />
-    <Compile Include="AzureMobileService.cs" />
+    <Compile Include="AcilisAktivite.cs" />
     <Compile Include="GirisAktivite.cs" />
-    <Compile Include="girisYap.cs" />
-    <Compile Include="KULUBEBILGI.cs" />
+    <Compile Include="Gmaps.cs" />
     <Compile Include="KULUBEBILGI2.cs" />
     <Compile Include="KULUBETEMEL.cs" />
     <Compile Include="UserActivity.cs" />
@@ -70,8 +72,6 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="user.cs" />
-    <Compile Include="userLogin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\baskentpaticlubMobileApp\ConnectedService.json" />
@@ -82,9 +82,6 @@
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_main.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\values\ic_launcher_background.xml" />
@@ -117,10 +114,10 @@
       <Version>1.0.16</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Azure.Mobile.Client">
-      <Version>3.1.0</Version>
+      <Version>4.1.1</Version>
     </PackageReference>
     <PackageReference Include="microsoft.azure.mobile.client.sqlitestore">
-      <Version>3.1.0</Version>
+      <Version>4.1.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
@@ -134,20 +131,36 @@
     <PackageReference Include="sqlitepcl">
       <Version>3.8.7.2</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\girisDiyalog.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
+    <PackageReference Include="Xamarin.Android.Support.Design">
+      <Version>28.0.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v4">
+      <Version>28.0.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
+      <Version>28.0.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms">
+      <Version>3.6.0.344457</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Base">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Basement">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Location">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Maps">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Tasks">
+      <Version>60.1142.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_user.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_admin.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -157,6 +170,15 @@
   <ItemGroup>
     <Content Include="paticlub.sln" />
     <AndroidResource Include="Resources\layout\activity_kulubesec.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\activity_gmaps.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\giris.png" />
+    <AndroidResource Include="Resources\drawable\den.png" />
+    <AndroidResource Include="Resources\drawable\yeni.png" />
+    <AndroidResource Include="Resources\layout\Acilis.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

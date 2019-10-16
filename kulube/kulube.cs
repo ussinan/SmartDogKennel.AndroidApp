@@ -1,14 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 
 namespace kulube
 {
@@ -19,7 +9,7 @@ namespace kulube
         private String KulubeYemek;
         private String KulubeHava;
         private int KulubeTemp;
-        private String KulubeKoordinat;
+        private int KulubeGirisCikis;
 
         public String mKulubeAdi
         {
@@ -45,32 +35,21 @@ namespace kulube
             set { KulubeTemp = value; }
         }
 
+        public int mKulubeGirisCikis
+        {
+            get { return KulubeGirisCikis; }
+            set { KulubeGirisCikis = value; }
+        }
+
         public String mKulubeHava
         {
             get { return KulubeHava; }
             set { KulubeHava = value; }
         }
 
-        public String mKulubeKoordinat
-        {
-            get { return KulubeKoordinat; }
-            set { KulubeKoordinat = value; }
-        }
-
         public void KulubeHavaDurumu()
         {
-            if(this.KulubeTemp <= 10)
-            {
-                this.KulubeHava = "USUYORUM " + KulubeTemp + "C" ;
-            }
-            else if(this.KulubeTemp >= 30)
-            {
-                this.KulubeHava = "COK SICAK " + KulubeTemp + "C";
-            }
-            else
-            {
-                this.KulubeHava = "HAVA GUZEL " + KulubeTemp + "C";
-            }
+            KulubeHava = "Sıcaklık : " + KulubeTemp + "°C" ;
         }
 
 

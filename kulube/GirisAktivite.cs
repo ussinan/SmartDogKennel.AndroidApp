@@ -1,16 +1,8 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.OS;
 using Android.Content;
-using Android.Runtime;
-using Android.Support.Design.Widget;
-using Android.Support.V7.App;
-using Android.Views;
 using Android.Widget;
-using System.Threading;
 using Microsoft.WindowsAzure.MobileServices;
-using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
-using Microsoft.WindowsAzure.MobileServices.Sync;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -22,6 +14,9 @@ namespace kulube
     {
         private List<string> kSituation;
         private Spinner mSpinner;
+        private string kisim;
+        private string kId;
+        private int counter = 0;
 
         protected override async void OnCreate(Bundle bundle)
         {
@@ -30,36 +25,41 @@ namespace kulube
             MobileServiceClient baskentpaticlubClient = new MobileServiceClient("https://baskentpaticlub.azurewebsites.net");
             IMobileServiceTable KULUBETEMELTABLO = baskentpaticlubClient.GetTable("KULUBETEMEL");
             CurrentPlatform.Init();
-
-
             SetContentView(Resource.Layout.activity_kulubesec);
             mSpinner = FindViewById<Spinner>(Resource.Id.spinner1);
 
-            JToken babayaro = await KULUBETEMELTABLO.ReadAsync("$select= id , createdAt , updatedAt, version , deleted ,KULUBEADI, KULUBEBOLGE, KULUBEID ");
-            List<KULUBETEMEL> items = JsonConvert.DeserializeObject<List<KULUBETEMEL>>(babayaro.ToString());
+            JToken JKulube = await KULUBETEMELTABLO.ReadAsync("$select= KULUBEADI, KULUBEBOLGE, KULUBEID, LAT, LNG");
+            List <KULUBETEMEL> items = JsonConvert.DeserializeObject<List<KULUBETEMEL>>(JKulube.ToString());
 
             int count = items.Count;
-
             kSituation = new List<string>();
-
-
-
+            kSituation.Add ("");
+          
             for (int i = 0; i < count; i++)
             {
-                kSituation.Add(items[i].KULUBEADI);
+               kSituation.Add(items[i].KULUBEADI);
             }
-
             ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, kSituation);
             mSpinner.Adapter = adapter;
-            string firstitem = mSpinner.SelectedItem.ToString();
+            mSpinner.ItemSelected += mSpinner_ItemSelected;
         }
 
-        private void ActLikeARequest()
+        async void mSpinner_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
-            Intent intent = new Intent(this, typeof(UserActivity));
-            this.StartActivity(intent);
+            if (counter == 0) { counter++; }
+            else { 
+            MobileServiceClient baskentpaticlubClient = new MobileServiceClient("https://baskentpaticlub.azurewebsites.net");
+            IMobileServiceTable KULUBETEMELTABLO = baskentpaticlubClient.GetTable("KULUBETEMEL");
+            
+            kisim = e.Parent.GetItemAtPosition(e.Position).ToString();
+            JToken JKulube = await KULUBETEMELTABLO.ReadAsync("$filter=KULUBEADI eq" + "'" + kisim +"'" );
+            List<KULUBETEMEL> items = JsonConvert.DeserializeObject<List<KULUBETEMEL>>(JKulube.ToString());
+            var activity2 = new Intent(this, typeof(UserActivity));
+            kId = (items[0].KULUBEID).ToString();
+                activity2.PutExtra("kId", kId);
+                activity2.PutExtra("kAd", items[0].KULUBEADI);
+                StartActivity(activity2);
+            }
         }
-
-
     }
 }
