@@ -1,27 +1,31 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+using Newtonsoft.Json;
 
 namespace kulube
 {
     public class KULUBEBILGI2
     {
-        [JsonProperty("kid")]
-        public int kid { get; set; }
+        [JsonProperty("ad")]
+        public string ad { get; set; }
 
         [JsonProperty("su")]
-        public bool su { get; set; }
+        public string su { get; set; }
 
         [JsonProperty("yemek")]
-        public bool yemek { get; set; }
+        public string yemek { get; set; }
 
-        [JsonProperty("sicaklik")]
-        public float sicaklik { get; set; }
-
-        [JsonProperty("giriscikis")]
-        public int giriscikis { get; set; }
-
-        [JsonProperty("tarih")]
-        public DateTime tarih { get; set; }
+        [JsonProperty("temp")]
+        public int temp { get; set; }
 
 
     }

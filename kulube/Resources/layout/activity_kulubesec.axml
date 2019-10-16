@@ -8,33 +8,25 @@
 	android:layout_height = "match_parent"
 	android:minWidth = "25px"
 	android:minHeight = "25px"
-	android:background="#8CD5FE"
+	android:background="#90EFEE"
 	android:weightSum="100"
 	>
 	<TextView
 		android:text="KULÜBE SEÇİN"
 		android:textAppearance="?android:attr/textAppearanceLarge"
 		android:layout_width="match_parent"
-		android:layout_marginTop = "50dp"
+		android:layout_weight="30"
 		android:layout_height = "wrap_content"
-		android:textColor="#ff7735"
+		android:textColor="#FF6000"
 		android:gravity="center"
 		android:textStyle="bold"
 		android:textSize="30sp"
 		android:id="@+id/textLogin" />
+	
 	<Spinner
 		android:id="@+id/spinner1"
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
-		android:layout_marginTop = "50dp"
 		android:layout_marginBottom="12dp" />
-	<ImageView
-		android:src="@drawable/yeni"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_weight="20"
-		android:layout_marginTop = "10dp"
-		android:id="@+id/ımageView1" />
-
 
 </LinearLayout>
