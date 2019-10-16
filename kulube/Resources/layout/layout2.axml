@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</LinearLayout>
+
+<TextView
+		android:text="KULÜBE SEÇİN"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"
+		android:layout_weight="30"
+		android:textColor="#FF6000"
+		android:gravity="center"
+		android:textStyle="bold"
+		android:textSize="30sp"
+		android:id="@+id/textLogin" />
+<Spinner
+		android:id="@+id/spinner1"
+		android:layout_width = "368dp"
+		android:layout_heigth = "wrap_content"
+	/>
+	
+</LinearLayout>
